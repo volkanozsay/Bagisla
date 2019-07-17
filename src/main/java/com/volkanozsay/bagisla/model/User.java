@@ -5,19 +5,14 @@ import java.util.Set;
 
 @Entity @Table(name = "USER") public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "USER_ID")
-	private Long userId;
-	@Column(name = "USER_NAME")
-	private String userName;
-	@Column(name = "PASSWORD")
-	private String password;
-	@Column(name = "USER_INFO")
-	private String userInfo;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "USER_ID") private Long userId;
+	@Column(name = "USER_NAME") private String userName;
+	@Column(name = "PASSWORD") private String password;
+	@Column(name = "USER_INFO") private String userInfo;
+	@OneToMany(mappedBy="user") private Set<Donation> donations;
+	@ManyToMany @Column(name = "ROLE_ID") private Set<Role> roles;
 
-	private Set<Donation> donations;
-	private Set<Role> role;
+	//TODO Kullanıcı resmi, TC Kimlik alanlarını ekle
 
 	public Long getUserId() {
 		return userId;
@@ -59,11 +54,11 @@ import java.util.Set;
 		this.donations = donations;
 	}
 
-	public Set<Role> getRole() {
-		return role;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(Set<Role> role) {
-		this.role = role;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 }
