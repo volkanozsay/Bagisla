@@ -9,10 +9,11 @@ import java.util.Date;
 	@Column(name = "DONATION_DESCRIPTION") private String donationDescription;
 	@Column(name = "DONATION_TARGET_MONEY") private Double donationTargetMoney;
 	@Column(name = "DONATION_CREATED_DATE") @Temporal(TemporalType.DATE) private Date donationDate;
+	@Column(name = "DONATION_IMAGE") @Lob private Byte[] donationImage;
 	@Column(name = "DONATION_CURRENT_MONEY") private Double donationCurrentMoney;
 	@ManyToOne @JoinColumn(name = "USER_ID") private User user;
 
-	//TODO  Bir bağıs istegine bagıs yapanların listesinin verilmesi, image, video alanlarının eklenmesi
+	//TODO  Bir bağıs istegine bagıs yapanların listesinin verilmesi,video alanlarının eklenmesi
 
 	public Long getDonationId() {
 		return donationId;
@@ -52,6 +53,14 @@ import java.util.Date;
 
 	public void setDonationDate(Date donationDate) {
 		this.donationDate = donationDate;
+	}
+
+	public Byte[] getDonationImage() {
+		return donationImage;
+	}
+
+	public void setDonationImage(Byte[] donationImage) {
+		this.donationImage = donationImage;
 	}
 
 	public Double getDonationCurrentMoney() {
