@@ -13,8 +13,7 @@ import java.util.Date;
 	@Column(name = "DONATION_CURRENT_MONEY") private Double donationCurrentMoney;
 	@ManyToOne @JoinColumn(name = "USER_ID") private User user;
 
-	//TODO  Bir bağıs istegine bagıs yapanların listesinin verilmesi,video alanlarının eklenmesi
-
+	
 	public Long getDonationId() {
 		return donationId;
 	}
